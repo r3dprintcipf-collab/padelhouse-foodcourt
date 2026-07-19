@@ -15,14 +15,14 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* 1. BANNIÈRE FIXE AVEC EFFET DE FLOU AU DÉFILEMENT */
+        /* BANNIÈRE FIXE AVEC EFFET DE FLOU AU DÉFILEMENT */
         .banner-container {
             position: sticky;
             top: 0;
             z-index: 1000;
             width: 100%;
-            background-color: rgba(252, 251, 250, 0.9); /* Fond de la page semi-transparent */
-            backdrop-filter: blur(12px); /* Floute les cartes qui passent derrière */
+            background-color: rgba(252, 251, 250, 0.9);
+            backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(74, 93, 55, 0.05);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
@@ -59,7 +59,7 @@
             box-sizing: border-box;
         }
 
-        /* CARTES EN STYLE GLASSMORPHISM ET ANIMATION D'APPARITION */
+        /* CARTES AVEC ANIMATION D'APPARITION */
         .resto-card {
             display: flex;
             flex-direction: column;
@@ -77,7 +77,6 @@
             box-sizing: border-box;
             box-shadow: 0 8px 24px rgba(74, 93, 55, 0.04);
             
-            /* Configuration de l'animation de base */
             opacity: 0;
             transform: translateY(20px);
             animation: fadeUpCascade 0.5s cubic-bezier(0.1, 0.76, 0.55, 0.94) forwards;
@@ -85,7 +84,7 @@
             transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.15s ease, box-shadow 0.15s ease;
         }
 
-        /* 2. DÉCALAGE EN CASCADE POUR CHAQUE RESTAURANT (DELAY) */
+        /* CASCADE D'APPARITION ET DE REVEAL DU TEXTE (2) */
         .grid-container .resto-card:nth-child(1) { animation-delay: 0.05s; }
         .grid-container .resto-card:nth-child(2) { animation-delay: 0.10s; }
         .grid-container .resto-card:nth-child(3) { animation-delay: 0.15s; }
@@ -94,7 +93,6 @@
         .grid-container .resto-card:nth-child(6) { animation-delay: 0.30s; }
         .grid-container .resto-card:nth-child(7) { animation-delay: 0.35s; }
 
-        /* Définition des mouvements de l'animation d'entrée */
         @keyframes fadeUpCascade {
             to {
                 opacity: 1;
@@ -102,14 +100,38 @@
             }
         }
 
+        /* 2. TEXT REVEAL DISCRET ET DOUX */
+        .resto-name {
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #3d4f2d;
+            opacity: 0;
+            animation: textReveal 0.4s ease forwards;
+        }
+        
+        .grid-container .resto-card:nth-child(1) .resto-name { animation-delay: 0.25s; }
+        .grid-container .resto-card:nth-child(2) .resto-name { animation-delay: 0.30s; }
+        .grid-container .resto-card:nth-child(3) .resto-name { animation-delay: 0.35s; }
+        .grid-container .resto-card:nth-child(4) .resto-name { animation-delay: 0.40s; }
+        .grid-container .resto-card:nth-child(5) .resto-name { animation-delay: 0.45s; }
+        .grid-container .resto-card:nth-child(6) .resto-name { animation-delay: 0.50s; }
+        .grid-container .resto-card:nth-child(7) .resto-name { animation-delay: 0.55s; }
+
+        @keyframes textReveal {
+            to { opacity: 1; }
+        }
+
         /* RETOUR TACTILE AU CLIC */
         .resto-card:active {
-            transform: scale(0.94) !important; /* Force la réduction même pendant l'animation si clic rapide */
+            transform: scale(0.94) !important;
             background-color: rgba(240, 238, 233, 0.9);
             box-shadow: 0 2px 6px rgba(74, 93, 55, 0.02);
         }
 
-        /* Style des logos images */
+        /* Style des logos */
         .resto-logo {
             width: 75px;
             height: 75px;
@@ -118,15 +140,6 @@
             border-radius: 12px;
             background-color: #fff;
             box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-        }
-
-        .resto-name {
-            font-size: 13px;
-            font-weight: 700;
-            line-height: 1.2;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: #3d4f2d;
         }
 
         /* PREMIÈRE LIGNE EN VEDETTE : KINU CAFE */
@@ -151,9 +164,28 @@
             font-size: 15px;
         }
 
+        /* 3. INDICATEUR DE DÉFILEMENT (BOUNCE ANIMATION) */
+        .scroll-indicator {
+            margin: 35px auto 10px auto;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #7a8a6e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-6px); }
+            60% { transform: translateY(-3px); }
+        }
+
         /* FOOTER DE PAGE */
         footer {
-            margin-top: 60px;
+            margin-top: 30px;
             padding: 30px 20px 40px 20px;
             background-color: rgba(74, 93, 55, 0.04);
             border-top: 1px solid rgba(74, 93, 55, 0.06);
@@ -164,7 +196,6 @@
             margin: 5px 0;
         }
         
-        /* CONTENEUR DES BOUTONS DE CONTACT */
         .footer-buttons {
             display: flex;
             gap: 12px;
@@ -257,6 +288,12 @@
             <div class="resto-name">Juice & Joy</div>
         </a>
 
+    </div>
+
+    <!-- 3. Indicateur visuel pour inviter à scroller -->
+    <div class="scroll-indicator">
+        <span>Défiler pour plus d'options</span>
+        <span>↓</span>
     </div>
 
     <!-- Pied de page -->
