@@ -88,7 +88,7 @@
             object-fit: contain;
             margin-bottom: 10px;
             border-radius: 12px;
-            background-color: #fff; /* Fond blanc sous les logos si besoin */
+            background-color: #fff;
             box-shadow: 0 2px 8px rgba(0,0,0,0.03);
         }
 
@@ -135,25 +135,44 @@
             color: #7a8a6e;
             margin: 5px 0;
         }
-        .maps-btn {
+        
+        /* CONTENEUR DES BOUTONS DE CONTACT */
+        .footer-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            max-width: 400px;
+            margin: 15px auto 0 auto;
+        }
+        
+        .action-btn {
+            flex: 1;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: #4a5d37;
+            padding: 12px 10px;
             color: #ffffff;
             text-decoration: none;
             font-size: 13px;
             font-weight: 600;
             border-radius: 30px;
             letter-spacing: 0.3px;
-            box-shadow: 0 4px 12px rgba(74, 93, 55, 0.15);
             transition: transform 0.2s, background-color 0.2s;
+            box-sizing: border-box;
         }
-        .maps-btn:active {
+        
+        .btn-maps {
+            background-color: #4a5d37;
+            box-shadow: 0 4px 12px rgba(74, 93, 55, 0.15);
+        }
+        
+        .btn-phone {
+            background-color: #2c3e29;
+            box-shadow: 0 4px 12px rgba(44, 62, 41, 0.15);
+        }
+        
+        .action-btn:active {
             transform: scale(0.95);
-            background-color: #39492a;
         }
     </style>
 </head>
@@ -212,11 +231,18 @@
 
     </div>
 
-    <!-- Pied de page avec bouton d'itinéraire -->
+    <!-- Pied de page -->
     <footer>
         <p><strong>Padel House Food Court</strong></p>
         <p>Ouvert tous les jours</p>
-        <a href="https://maps.google.com" class="maps-btn" target="_blank">📍 Obtenir l'itinéraire</a>
+        
+        <div class="footer-buttons">
+            <!-- Bouton itinéraire mis à jour -->
+            <a href="https://www.google.com/maps/place/Padel+house/data=!4m2!3m1!1s0x0:0x348b2a8d13be4396?sa=X&ved=1t:2428&ictx=111" class="action-btn btn-maps" target="_blank">📍 Itinéraire</a>
+            
+            <!-- Bouton d'appel avec indicatif +225 -->
+            <a href="tel:+2250799998888" class="action-btn btn-phone">📞 Appeler</a>
+        </div>
     </footer>
 
 </body>
