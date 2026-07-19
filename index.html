@@ -9,18 +9,23 @@
             font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fcfbfa; /* Aligné parfaitement sur le fond de la bannière */
+            background-color: #fcfbfa;
             color: #2c3e29;
             text-align: center;
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* BANNIÈRE PLEINE LARGEUR */
+        /* 1. BANNIÈRE FIXE AVEC EFFET DE FLOU AU DÉFILEMENT */
         .banner-container {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             width: 100%;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
+            background-color: rgba(252, 251, 250, 0.9); /* Fond de la page semi-transparent */
+            backdrop-filter: blur(12px); /* Floute les cartes qui passent derrière */
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(74, 93, 55, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
         }
         .banner-container img {
             width: 100%;
@@ -54,29 +59,52 @@
             box-sizing: border-box;
         }
 
-        /* CARTES EN STYLE GLASSMORPHISM (HAUT DE GAMME) */
+        /* CARTES EN STYLE GLASSMORPHISM ET ANIMATION D'APPARITION */
         .resto-card {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             aspect-ratio: 1 / 1;
-            background-color: rgba(255, 255, 255, 0.65); /* Fond semi-transparent */
-            backdrop-filter: blur(8px); /* Effet de flou arrière-plan */
+            background-color: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             color: #4a5d37;
             text-decoration: none;
-            border: 1px solid rgba(74, 93, 55, 0.08); /* Bordure quasi invisible */
-            border-radius: 20px; /* Bords plus arrondis pour un look app moderne */
+            border: 1px solid rgba(74, 93, 55, 0.08);
+            border-radius: 20px;
             padding: 14px;
             box-sizing: border-box;
-            box-shadow: 0 8px 24px rgba(74, 93, 55, 0.04); /* Ombre très douce */
+            box-shadow: 0 8px 24px rgba(74, 93, 55, 0.04);
+            
+            /* Configuration de l'animation de base */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUpCascade 0.5s cubic-bezier(0.1, 0.76, 0.55, 0.94) forwards;
+            
             transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.15s ease, box-shadow 0.15s ease;
         }
 
-        /* RETOUR TACTILE HYPER FLUIDE AU CLIC */
+        /* 2. DÉCALAGE EN CASCADE POUR CHAQUE RESTAURANT (DELAY) */
+        .grid-container .resto-card:nth-child(1) { animation-delay: 0.05s; }
+        .grid-container .resto-card:nth-child(2) { animation-delay: 0.10s; }
+        .grid-container .resto-card:nth-child(3) { animation-delay: 0.15s; }
+        .grid-container .resto-card:nth-child(4) { animation-delay: 0.20s; }
+        .grid-container .resto-card:nth-child(5) { animation-delay: 0.25s; }
+        .grid-container .resto-card:nth-child(6) { animation-delay: 0.30s; }
+        .grid-container .resto-card:nth-child(7) { animation-delay: 0.35s; }
+
+        /* Définition des mouvements de l'animation d'entrée */
+        @keyframes fadeUpCascade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RETOUR TACTILE AU CLIC */
         .resto-card:active {
-            transform: scale(0.94); /* Effet de pression dynamique */
+            transform: scale(0.94) !important; /* Force la réduction même pendant l'animation si clic rapide */
             background-color: rgba(240, 238, 233, 0.9);
             box-shadow: 0 2px 6px rgba(74, 93, 55, 0.02);
         }
@@ -178,7 +206,7 @@
 </head>
 <body>
 
-    <!-- Bannière bord à bord -->
+    <!-- Bannière fixe avec effet givré -->
     <div class="banner-container">
         <img src="images/banniere.png" alt="Padel House Food Court">
     </div>
@@ -237,10 +265,7 @@
         <p>Ouvert tous les jours</p>
         
         <div class="footer-buttons">
-            <!-- Bouton itinéraire mis à jour -->
             <a href="https://www.google.com/maps/place/Padel+house/data=!4m2!3m1!1s0x0:0x348b2a8d13be4396?sa=X&ved=1t:2428&ictx=111" class="action-btn btn-maps" target="_blank">📍 Itinéraire</a>
-            
-            <!-- Bouton d'appel avec indicatif +225 -->
             <a href="tel:+2250799998888" class="action-btn btn-phone">📞 Appeler</a>
         </div>
     </footer>
