@@ -50,13 +50,13 @@
             box-sizing: border-box;
         }
 
-        /* STYLE DES CARTES RECTANGLES ET CARRÉES */
+        /* STYLE DES CARTES */
         .resto-card {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            aspect-ratio: 1 / 1; /* Par défaut un carré parfait */
+            aspect-ratio: 1 / 1;
             background-color: #ffffff;
             color: #4a5d37;
             text-decoration: none;
@@ -75,22 +75,23 @@
             background-color: #f7f6f4;
         }
 
-        /* Gestion de l'image du logo */
+        /* Style des logos images */
         .resto-logo {
-            width: 50px;
-            height: 50px;
+            width: 65px;
+            height: 65px;
             object-fit: contain;
             margin-bottom: 8px;
+            border-radius: 8px;
         }
 
-        /* Icône temporaire si le logo n'est pas encore téléversé */
+        /* Style pour l'icône de secours si pas de logo */
         .logo-icon {
-            font-size: 32px;
+            font-size: 38px;
             margin-bottom: 6px;
         }
 
         .resto-name {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: bold;
             line-height: 1.2;
             text-transform: uppercase;
@@ -104,15 +105,17 @@
             font-weight: normal;
         }
 
-        /* PREMIÈRE LIGNE : KINU CAFE (Prend toute la largeur) */
+        /* PREMIÈRE LIGNE : KINU CAFE */
         .grid-container .resto-card:first-child {
             grid-column: span 2;
-            aspect-ratio: 2.1 / 1; /* Format rectangle horizontal équilibré */
-            flex-direction: row; /* Aligne le logo et le texte côte à côte */
+            aspect-ratio: 2.1 / 1;
+            flex-direction: row;
             gap: 20px;
+            padding: 15px;
         }
-        .grid-container .resto-card:first-child .logo-icon {
-            font-size: 44px;
+        .grid-container .resto-card:first-child .resto-logo {
+            width: 75px;
+            height: 75px;
             margin-bottom: 0;
         }
         .grid-container .resto-card:first-child .resto-text-wrapper {
@@ -131,9 +134,9 @@
 
     <div class="grid-container">
         
-        <!-- LIGNE 1 : KINU (Café) -->
+        <!-- LIGNE 1 : KINU -->
         <a href="menus/kinu.pdf" class="resto-card" target="_blank">
-            <div class="logo-icon">☕</div>
+            <img src="images/KINU.JPG" alt="Kinu" class="resto-logo">
             <div class="resto-text-wrapper">
                 <div class="resto-name">Kinu</div>
                 <div class="resto-tag">Café & Douceurs</div>
@@ -142,39 +145,40 @@
 
         <!-- LIGNE 2 : PORTOFINO & BROS & BUNS -->
         <a href="menus/portofino.pdf" class="resto-card" target="_blank">
-            <div class="logo-icon">🍕</div>
+            <img src="images/PORTOFINO.JPG" alt="Portofino" class="resto-logo">
             <div class="resto-name">Portofino</div>
             <div class="resto-tag">Pizzeria</div>
         </a>
 
         <a href="menus/bros_buns.pdf" class="resto-card" target="_blank">
-            <div class="logo-icon">🍔</div>
+            <!-- Icône temporaire car absent du dossier -->
+            <div class="logo-icon">🍔</div> 
             <div class="resto-name">Bros & Buns</div>
             <div class="resto-tag">Fast Food</div>
         </a>
 
         <!-- LIGNE 3 : SUGAR LAB & FIT MEAL -->
         <a href="menus/sugar_lab.pdf" class="resto-card" target="_blank">
-            <div class="logo-icon">🧁</div>
+            <img src="images/SUGARLAB.JPG" alt="Sugar Lab" class="resto-logo">
             <div class="resto-name">Sugar Lab</div>
             <div class="resto-tag">Desserts</div>
         </a>
 
         <a href="menus/fit_meal.pdf" class="resto-card" target="_blank">
-            <div class="logo-icon">🥗</div>
+            <img src="images/FITMEALDELI.JPG" alt="Fit Meal" class="resto-logo">
             <div class="resto-name">Fit Meal</div>
             <div class="resto-tag">Healthy Food</div>
         </a>
 
         <!-- LIGNE 4 : LE SAJ SPOT & JUICE & JOY -->
         <a href="menus/le_saj_spot.pdf" class="resto-card" target="_blank">
-            <div class="logo-icon">🫓</div>
+            <img src="images/LESJASPOT.JPG" alt="Le Saj Spot" class="resto-logo">
             <div class="resto-name">Le Saj Spot</div>
             <div class="resto-tag">Spécialités Libanaises</div>
         </a>
 
         <a href="menus/juice_joy.pdf" class="resto-card" target="_blank">
-            <div class="logo-icon">🍹</div>
+            <img src="images/JUICEANDJOY.JPG" alt="Juice & Joy" class="resto-logo">
             <div class="resto-name">Juice & Joy</div>
             <div class="resto-tag">Jus Naturels</div>
         </a>
