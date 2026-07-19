@@ -12,6 +12,190 @@
             background-color: #fcfbfa;
             color: #333;
             text-align: center;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .banner-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 15px 10px;
+            box-sizing: border-box;
+        }
+        .banner-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        h1 {
+            color: #4a5d37;
+            margin-top: 10px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 25px;
+            padding: 0 20px;
+        }
+        
+        /* GRILLE MOBILE */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 450px;
+            margin: 0 auto 40px auto;
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+
+        /* STYLE DES CARTES RECTANGLES ET CARRÉES */
+        .resto-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1 / 1; /* Par défaut un carré parfait */
+            background-color: #ffffff;
+            color: #4a5d37;
+            text-decoration: none;
+            border: 2px solid #e1deda;
+            border-radius: 16px;
+            padding: 12px;
+            box-sizing: border-box;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .resto-card:active, .resto-card:hover {
+            transform: scale(0.96);
+            border-color: #4a5d37;
+            box-shadow: 0 6px 12px rgba(74,93,55,0.1);
+            background-color: #f7f6f4;
+        }
+
+        /* Gestion de l'image du logo */
+        .resto-logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            margin-bottom: 8px;
+        }
+
+        /* Icône temporaire si le logo n'est pas encore téléversé */
+        .logo-icon {
+            font-size: 32px;
+            margin-bottom: 6px;
+        }
+
+        .resto-name {
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .resto-tag {
+            font-size: 11px;
+            color: #777;
+            margin-top: 4px;
+            font-weight: normal;
+        }
+
+        /* PREMIÈRE LIGNE : KINU CAFE (Prend toute la largeur) */
+        .grid-container .resto-card:first-child {
+            grid-column: span 2;
+            aspect-ratio: 2.1 / 1; /* Format rectangle horizontal équilibré */
+            flex-direction: row; /* Aligne le logo et le texte côte à côte */
+            gap: 20px;
+        }
+        .grid-container .resto-card:first-child .logo-icon {
+            font-size: 44px;
+            margin-bottom: 0;
+        }
+        .grid-container .resto-card:first-child .resto-text-wrapper {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="banner-container">
+        <img src="images/banniere.png" alt="Padel House Food Court">
+    </div>
+
+    <h1>Découvrez nos Restaurants</h1>
+    <p class="subtitle">Cliquez sur un établissement pour ouvrir son menu PDF instantanément.</p>
+
+    <div class="grid-container">
+        
+        <!-- LIGNE 1 : KINU (Café) -->
+        <a href="menus/kinu.pdf" class="resto-card" target="_blank">
+            <div class="logo-icon">☕</div>
+            <div class="resto-text-wrapper">
+                <div class="resto-name">Kinu</div>
+                <div class="resto-tag">Café & Douceurs</div>
+            </div>
+        </a>
+
+        <!-- LIGNE 2 : PORTOFINO & BROS & BUNS -->
+        <a href="menus/portofino.pdf" class="resto-card" target="_blank">
+            <div class="logo-icon">🍕</div>
+            <div class="resto-name">Portofino</div>
+            <div class="resto-tag">Pizzeria</div>
+        </a>
+
+        <a href="menus/bros_buns.pdf" class="resto-card" target="_blank">
+            <div class="logo-icon">🍔</div>
+            <div class="resto-name">Bros & Buns</div>
+            <div class="resto-tag">Fast Food</div>
+        </a>
+
+        <!-- LIGNE 3 : SUGAR LAB & FIT MEAL -->
+        <a href="menus/sugar_lab.pdf" class="resto-card" target="_blank">
+            <div class="logo-icon">🧁</div>
+            <div class="resto-name">Sugar Lab</div>
+            <div class="resto-tag">Desserts</div>
+        </a>
+
+        <a href="menus/fit_meal.pdf" class="resto-card" target="_blank">
+            <div class="logo-icon">🥗</div>
+            <div class="resto-name">Fit Meal</div>
+            <div class="resto-tag">Healthy Food</div>
+        </a>
+
+        <!-- LIGNE 4 : LE SAJ SPOT & JUICE & JOY -->
+        <a href="menus/le_saj_spot.pdf" class="resto-card" target="_blank">
+            <div class="logo-icon">🫓</div>
+            <div class="resto-name">Le Saj Spot</div>
+            <div class="resto-tag">Spécialités Libanaises</div>
+        </a>
+
+        <a href="menus/juice_joy.pdf" class="resto-card" target="_blank">
+            <div class="logo-icon">🍹</div>
+            <div class="resto-name">Juice & Joy</div>
+            <div class="resto-tag">Jus Naturels</div>
+        </a>
+
+    </div>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padel House - Food Court</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fcfbfa;
+            color: #333;
+            text-align: center;
             -webkit-tap-highlight-color: transparent; /* Désactive le flash bleu au clic sur mobile */
         }
         .banner-container {
