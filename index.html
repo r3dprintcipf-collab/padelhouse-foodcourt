@@ -84,7 +84,7 @@
             transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.15s ease, box-shadow 0.15s ease;
         }
 
-        /* CASCADE D'APPARITION ET DE REVEAL DU TEXTE (2) */
+        /* CASCADE D'APPARITION DES CARTES */
         .grid-container .resto-card:nth-child(1) { animation-delay: 0.05s; }
         .grid-container .resto-card:nth-child(2) { animation-delay: 0.10s; }
         .grid-container .resto-card:nth-child(3) { animation-delay: 0.15s; }
@@ -100,7 +100,7 @@
             }
         }
 
-        /* 2. TEXT REVEAL DISCRET ET DOUX */
+        /* APPEURANCE PROGRESSIVE DU TEXTE */
         .resto-name {
             font-size: 13px;
             font-weight: 700;
@@ -164,28 +164,9 @@
             font-size: 15px;
         }
 
-        /* 3. INDICATEUR DE DÉFILEMENT (BOUNCE ANIMATION) */
-        .scroll-indicator {
-            margin: 35px auto 10px auto;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #7a8a6e;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-6px); }
-            60% { transform: translateY(-3px); }
-        }
-
         /* FOOTER DE PAGE */
         footer {
-            margin-top: 30px;
+            margin-top: 40px;
             padding: 30px 20px 40px 20px;
             background-color: rgba(74, 93, 55, 0.04);
             border-top: 1px solid rgba(74, 93, 55, 0.06);
@@ -288,12 +269,6 @@
             <div class="resto-name">Juice & Joy</div>
         </a>
 
-    </div>
-
-    <!-- 3. Indicateur visuel pour inviter à scroller -->
-    <div class="scroll-indicator">
-        <span>Défiler pour plus d'options</span>
-        <span>↓</span>
     </div>
 
     <!-- Pied de page -->
