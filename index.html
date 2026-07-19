@@ -6,122 +6,170 @@
     <title>Padel House - Food Court</title>
     <style>
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fcfbfa;
-            color: #333;
+            background-color: #fcfbfa; /* Aligné parfaitement sur le fond de la bannière */
+            color: #2c3e29;
             text-align: center;
             -webkit-tap-highlight-color: transparent;
         }
+
+        /* BANNIÈRE PLEINE LARGEUR */
         .banner-container {
             width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 15px 10px;
-            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
         }
         .banner-container img {
             width: 100%;
             height: auto;
-            border-radius: 8px;
-        }
-        h1 {
-            color: #4a5d37;
-            margin-top: 10px;
-            font-size: 22px;
-            font-weight: 600;
-        }
-        .subtitle {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 25px;
-            padding: 0 20px;
+            display: block;
         }
         
-        /* GRILLE MOBILE */
+        h1 {
+            color: #4a5d37;
+            margin-top: 30px;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .subtitle {
+            color: #7a8a6e;
+            font-size: 14px;
+            margin-bottom: 30px;
+            padding: 0 20px;
+            font-weight: 400;
+        }
+        
+        /* GRILLE MOBILE ÉPURÉE */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 16px;
             max-width: 450px;
-            margin: 0 auto 40px auto;
-            padding: 0 15px;
+            margin: 0 auto;
+            padding: 0 16px;
             box-sizing: border-box;
         }
 
-        /* STYLE DES CARTES */
+        /* CARTES EN STYLE GLASSMORPHISM (HAUT DE GAMME) */
         .resto-card {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             aspect-ratio: 1 / 1;
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.65); /* Fond semi-transparent */
+            backdrop-filter: blur(8px); /* Effet de flou arrière-plan */
+            -webkit-backdrop-filter: blur(8px);
             color: #4a5d37;
             text-decoration: none;
-            border: 2px solid #e1deda;
-            border-radius: 16px;
-            padding: 12px;
+            border: 1px solid rgba(74, 93, 55, 0.08); /* Bordure quasi invisible */
+            border-radius: 20px; /* Bords plus arrondis pour un look app moderne */
+            padding: 14px;
             box-sizing: border-box;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            box-shadow: 0 8px 24px rgba(74, 93, 55, 0.04); /* Ombre très douce */
+            transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.15s ease, box-shadow 0.15s ease;
         }
 
-        .resto-card:active, .resto-card:hover {
-            transform: scale(0.96);
-            border-color: #4a5d37;
-            box-shadow: 0 6px 12px rgba(74,93,55,0.1);
-            background-color: #f7f6f4;
+        /* RETOUR TACTILE HYPER FLUIDE AU CLIC */
+        .resto-card:active {
+            transform: scale(0.94); /* Effet de pression dynamique */
+            background-color: rgba(240, 238, 233, 0.9);
+            box-shadow: 0 2px 6px rgba(74, 93, 55, 0.02);
         }
 
         /* Style des logos images */
         .resto-logo {
-            width: 70px;
-            height: 70px;
+            width: 75px;
+            height: 75px;
             object-fit: contain;
-            margin-bottom: 8px;
-            border-radius: 8px;
+            margin-bottom: 10px;
+            border-radius: 12px;
+            background-color: #fff; /* Fond blanc sous les logos si besoin */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
         }
 
         .resto-name {
-            font-size: 14px;
-            font-weight: bold;
+            font-size: 13px;
+            font-weight: 700;
             line-height: 1.2;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
+            color: #3d4f2d;
         }
 
-        /* PREMIÈRE LIGNE : KINU CAFE */
+        /* PREMIÈRE LIGNE EN VEDETTE : KINU CAFE */
         .grid-container .resto-card:first-child {
             grid-column: span 2;
-            aspect-ratio: 2.1 / 1;
+            aspect-ratio: 2.2 / 1;
             flex-direction: row;
-            gap: 20px;
-            padding: 15px;
+            gap: 24px;
+            padding: 16px 24px;
+            background-color: rgba(255, 255, 255, 0.8);
         }
         .grid-container .resto-card:first-child .resto-logo {
-            width: 80px;
-            height: 80px;
+            width: 85px;
+            height: 85px;
             margin-bottom: 0;
+            border-radius: 14px;
         }
         .grid-container .resto-card:first-child .resto-text-wrapper {
             text-align: left;
+        }
+        .grid-container .resto-card:first-child .resto-name {
+            font-size: 15px;
+        }
+
+        /* FOOTER DE PAGE */
+        footer {
+            margin-top: 60px;
+            padding: 30px 20px 40px 20px;
+            background-color: rgba(74, 93, 55, 0.04);
+            border-top: 1px solid rgba(74, 93, 55, 0.06);
+        }
+        footer p {
+            font-size: 12px;
+            color: #7a8a6e;
+            margin: 5px 0;
+        }
+        .maps-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #4a5d37;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 30px;
+            letter-spacing: 0.3px;
+            box-shadow: 0 4px 12px rgba(74, 93, 55, 0.15);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .maps-btn:active {
+            transform: scale(0.95);
+            background-color: #39492a;
         }
     </style>
 </head>
 <body>
 
+    <!-- Bannière bord à bord -->
     <div class="banner-container">
         <img src="images/banniere.png" alt="Padel House Food Court">
     </div>
 
     <h1>Découvrez nos Restaurants</h1>
-    <p class="subtitle">Cliquez sur un établissement pour ouvrir son menu PDF instantanément.</p>
+    <p class="subtitle">Sélectionnez un établissement pour ouvrir son menu PDF.</p>
 
     <div class="grid-container">
         
-        <!-- LIGNE 1 : KINU (Mis à jour vers le dossier menus) -->
+        <!-- LIGNE 1 : KINU -->
         <a href="menus/kinu.pdf" class="resto-card" target="_blank">
             <img src="images/KINU.jpg" alt="Kinu" class="resto-logo">
             <div class="resto-text-wrapper">
@@ -163,6 +211,13 @@
         </a>
 
     </div>
+
+    <!-- Pied de page avec bouton d'itinéraire -->
+    <footer>
+        <p><strong>Padel House Food Court</strong></p>
+        <p>Ouvert tous les jours</p>
+        <a href="https://maps.google.com" class="maps-btn" target="_blank">📍 Obtenir l'itinéraire</a>
+    </footer>
 
 </body>
 </html>
